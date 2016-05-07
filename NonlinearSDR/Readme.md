@@ -1,1 +1,1 @@
-Nonlinear Sufficient Dimension Reduction
+Nonlinear Sufficient Dimension Reduction for Functinal Data
