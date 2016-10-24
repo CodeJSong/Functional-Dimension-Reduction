@@ -1,30 +1,11 @@
-# update April 8, 2016
+
 # - separate c code into sub_codes.cpp / bspline.cpp  
 library(RcppArmadillo)
 library(fda)
-get_os <- function(){
-  sysinf <- Sys.info()
-  if (!is.null(sysinf)){
-    os <- sysinf['sysname']
-    if (os == 'Darwin')
-      os <- "osx"
-  } else { ## mystery machine
-    os <- .Platform$OS.type
-    if (grepl("^darwin", R.version$os))
-      os <- "osx"
-    if (grepl("linux-gnu", R.version$os))
-      os <- "linux"
-  }
-  tolower(os)
-}
-if(get_os()=="osx"){
-  Rcpp::sourceCpp('~/CloudStation/Codes/Functional Dimension Reduction/cpp_code/bspline.cpp')
-  Rcpp::sourceCpp('~/CloudStation/Codes/Functional Dimension Reduction/cpp_code/sub_codes.cpp')
-}
-if(get_os()=="windows"){
-  Rcpp::sourceCpp('C:/Users/Jignic/CloudStation/Codes/Functional Dimension Reduction/cpp_code/bspline.cpp')
-  Rcpp::sourceCpp('C:/Users/Jignic/CloudStation/Codes/Functional Dimension Reduction/cpp_code/sub_codes.cpp')
-}
+# Set working directory to the folder, functional dimension reduction
+setwd("~/CloudStation/Codes/GitHub/Functional-Dimension-Reduction")
+Rcpp::sourceCpp('cpp_code/bspline.cpp')
+Rcpp::sourceCpp('cpp_code/sub_codes.cpp')
 
 ##############################################################
 # data2fdr   4/8/2016
